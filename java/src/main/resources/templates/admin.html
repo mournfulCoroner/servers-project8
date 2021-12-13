@@ -1,0 +1,142 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title th:text="${dictionary.ADMIN_PANEL}"></title>
+
+    <link rel="stylesheet" href="/styles/admin.css">
+    <link th:if="${sessionTheme == T(com.example.java.utils.ThemeType).DARK}" rel="stylesheet" href="/styles/dark-theme.css">
+</head>
+
+<body>
+<h1 th:text="${dictionary.ADMIN_PANEL}"></h1>
+
+<div>
+    <a th:href="@{/admin/graphics}">графики</a>
+</div>
+
+<div th:if="${nickname.length() > 0}" th:text="${nickname}"></div>
+<div th:if="${nickname.length() == 0}" th:text="${dictionary.NAMELESS}"></div>
+
+<h2 th:text="${dictionary.SETTING}"></h2>
+<form th:action="@{/admin/setting}" th:method="post">
+    <div>
+        <span th:text="${dictionary.THEME}"></span>
+        <label>
+            <input type="radio"
+                   name="theme"
+                   th:value="${T(com.example.java.utils.ThemeType).LIGHT}"
+                   th:checked="${sessionTheme == T(com.example.java.utils.ThemeType).LIGHT}"/>
+            <span th:text="${dictionary.LIGHT}"></span>
+        </label>
+        <label>
+            <input type="radio"
+                   name="theme"
+                   th:value="${T(com.example.java.utils.ThemeType).DARK}"
+                   th:checked="${sessionTheme == T(com.example.java.utils.ThemeType).DARK}"/>
+            <span th:text="${dictionary.DARK}"></span>
+        </label>
+    </div>
+
+    <div>
+        <span th:text="${dictionary.LANGUAGE}"></span>
+        <label>
+            <input type="radio"
+                   name="language"
+                   th:value="${T(com.example.java.utils.LanguageType).RU}"
+                   th:checked="${sessionLanguage == T(com.example.java.utils.LanguageType).RU}"
+            />
+            Русский
+        </label>
+        <label>
+            <input type="radio"
+                   name="language"
+                   th:value="${T(com.example.java.utils.LanguageType).EN}"
+                   th:checked="${sessionLanguage == T(com.example.java.utils.LanguageType).EN}"
+            >
+            English
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <span th:text="${dictionary.NAME}"></span>
+            <input type="text" name="name" th:value="${nickname}"/>
+        </label>
+    </div>
+
+    <button type="submit" th:text="${dictionary.UPDATE}"></button>
+</form>
+
+<h2>PDF</h2>
+<form enctype="multipart/form-data" th:action="@{/admin/pdf}" th:method="post">
+    <div>
+        <span th:text="${dictionary.SEND_THIS_FILE}"></span>:
+        <label for="uploadbtn" class="uploadButton" th:text="${dictionary.UPLOAD_FILE}">
+        </label>
+        <div></div>
+        <input
+                style="opacity: 0; z-index: -1;"
+                type="file" name="userfile" id="uploadbtn"
+                onchange='document.querySelector(".uploadButton + div").innerHTML = Array.from(this.files).map(f => f.name).join("<br />")'
+        />
+    </div>
+    <input type="submit" th:value="${dictionary.SEND_FILE}" />
+</form>
+
+<h3 th:text="${dictionary.UPLOADING_FILES}"></h3>
+
+<ul>
+    <li th:each="fileInfo :${files}">
+        <a th:href="@{/uploads/{id}.pdf (id = ${fileInfo.getId()})}" th:text="${fileInfo.getName()}"></a>
+    </li>
+</ul>
+
+
+<h2 th:text="${dictionary.ADMINISTRATORS}"></h2>
+<form th:action="@{/admin/users}" th:method="post">
+    <p><span th:text="${dictionary.LOGIN}"></span>: <input type="text" name="name" /></p>
+    <p><span th:text="${dictionary.PASSWORD}"></span>: <input type="password" name="password" /></p>
+    <p><button type="submit" th:text="${dictionary.SEND}"></button></p>
+</form>
+
+<ul>
+    <li th:each="user :${users}">
+        <form
+                th:method="delete"
+                th:action="@{/admin/users/{id} (id = ${user.getId()})}"
+                style="display: inline"
+        >
+            <button type="submit">X</button>
+        </form>
+        <span th:text="${user.getId()}"></span>
+        <span th:text="${user.getName()}"></span>
+    </li>
+</ul>
+
+<h2 th:text="${dictionary.INTERESTING_FACTS}"></h2>
+<form th:action="@{/admin/interesting_fact}" th:method="post">
+    <p><span th:text="${dictionary.TITLE}"></span>: <input type="text" name="title" /></p>
+    <p><span th:text="${dictionary.TEXT}"></span>: <textarea type="text" name="text"></textarea></p>
+    <p><span th:text="${dictionary.URL_VIDEO}"></span>: <input type="text" name="urlVideo" /></p>
+    <p><button type="submit" th:text="${dictionary.SEND}"></button></p>
+</form>
+
+<ul>
+    <li th:each="interestingFact :${interestingFacts}">
+        <form
+                th:method="delete"
+                th:action="@{/admin/interesting_fact/{id} (id = ${interestingFact.getId()})}"
+                style="display: inline"
+        >
+            <button type="submit">X</button>
+        </form>
+        <span th:text="${interestingFact.getId()}"></span>
+        <span th:text="${interestingFact.getTitle()}"></span>
+        <span th:text="${interestingFact.getUrlVideo()}"></span>
+        <div th:text="${interestingFact.getText()}"></div>
+    </li>
+</ul>
+
+</body>
+
+</html>
