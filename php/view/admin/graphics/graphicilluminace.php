@@ -1,14 +1,38 @@
 <?php
 include '../../../security/login.php';
-include './getFixtures.php';
-include './drawNormGraphic.php';
+include './NormGraphic.php';
 
-$norm = 361;
+class Graphicilluminace extends NormGraphic
+{
+    private $points;
+    private $norm = 361;
 
-$points = [0, 0]; // 0 - <=$norm; 1 - >$norm
+    function __construct()
+    {
+        parent::__construct($this->norm, "Illuminace", "Illuminance norm");
+    }
 
-foreach ($fixtures->getObjects() as $fixture) {
-    $points[$fixture->illuminace > $norm ? 1 : 0]++;
+    function getPoints($fixtures)
+    {
+        $this->points = [0, 0]; // 0 - <=$norm; 1 - >$norm
+
+        foreach ($fixtures->getObjects() as $fixture) {
+            $this->points[$fixture->illuminace > $this->norm ? 1 : 0]++;
+        }
+
+        return $this->points;
+    }
+
+    function getMax()
+    {
+        return max($this->points) + 1;
+    }
+
+    function getMin()
+    {
+        return 0;
+    }
 }
 
-drawNormGraphic($norm, $points, "Illuminace", "Illuminance norm", 0, max($points) + 1);
+$graphicilluminace = new Graphicilluminace;
+$graphicilluminace->start();
