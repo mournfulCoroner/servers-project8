@@ -3,13 +3,13 @@
 require '../../../../vendor/autoload.php';
 use Nelmio\Alice\Loader\NativeLoader;
 
-// данные для ящичка интернет-вещей
-class Dump {
-    public $illuminace;
-    public $voltage;
+class Subject {
+    public $name;
+    public $currentIlnesses;
+    public $oldIlnesses;
     public $temperature;
-    public $sound;
-    public $humidity;
+    public $height;
+    public $weight;
 }
 
 abstract class Graphic {
@@ -30,7 +30,7 @@ abstract class Graphic {
 
     public function drawImage($image) {
         $filename1 = "example.createFunctionSerie.scatter.png";
-        $filename_whater_mark = "whater_mark.png";
+        $filename_whater_mark = "water_mark.png";
 
         $image->render($filename1);
 

@@ -1,6 +1,5 @@
 package com.example.java.controller;
 
-import com.example.java.modules.InterestingFact;
 import com.example.java.modules.User;
 import com.example.java.service.UserService;
 import lombok.RequiredArgsConstructor;

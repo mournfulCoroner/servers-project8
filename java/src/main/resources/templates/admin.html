@@ -3,16 +3,13 @@
 <head>
     <title th:text="${dictionary.ADMIN_PANEL}"></title>
 
-    <link rel="stylesheet" href="/styles/admin.css">
-    <link th:if="${sessionTheme == T(com.example.java.utils.ThemeType).DARK}" rel="stylesheet" href="/styles/dark-theme.css">
+    <link rel="stylesheet" href="/admin.css">
+    <link rel="stylesheet" href="/style_admin.css">
+    <link th:if="${sessionTheme == T(com.example.java.utils.ThemeType).DARK}" rel="stylesheet" href="/dark-theme.css">
 </head>
 
 <body>
 <h1 th:text="${dictionary.ADMIN_PANEL}"></h1>
-
-<div>
-    <a th:href="@{/admin/graphics}">графики</a>
-</div>
 
 <div th:if="${nickname.length() > 0}" th:text="${nickname}"></div>
 <div th:if="${nickname.length() == 0}" th:text="${dictionary.NAMELESS}"></div>
@@ -91,6 +88,10 @@
     </li>
 </ul>
 
+<h2 th:text="${dictionary.GRAPHICS}"></h2>
+
+<a href="/admin/graphics/index.php" class="uploadButton"><span th:text="${dictionary.SHOW_GRAPHICS}"></span></a>
+
 
 <h2 th:text="${dictionary.ADMINISTRATORS}"></h2>
 <form th:action="@{/admin/users}" th:method="post">
@@ -113,28 +114,28 @@
     </li>
 </ul>
 
-<h2 th:text="${dictionary.INTERESTING_FACTS}"></h2>
-<form th:action="@{/admin/interesting_fact}" th:method="post">
-    <p><span th:text="${dictionary.TITLE}"></span>: <input type="text" name="title" /></p>
-    <p><span th:text="${dictionary.TEXT}"></span>: <textarea type="text" name="text"></textarea></p>
-    <p><span th:text="${dictionary.URL_VIDEO}"></span>: <input type="text" name="urlVideo" /></p>
+<h2 th:text="${dictionary.THEATRES}"></h2>
+<form th:action="@{/admin/theatre}" th:method="post">
+    <p><span th:text="${dictionary.TITLE}"></span>: <input type="text" name="name" /></p>
+    <p><span th:text="${dictionary.TEXT}"></span>: <input type="text" name="urlTheatre" /></p>
+    <p><span th:text="${dictionary.URL_VIDEO}"></span>: <input type="text" name="imgSrc" /></p>
     <p><button type="submit" th:text="${dictionary.SEND}"></button></p>
 </form>
 
 <ul>
-    <li th:each="interestingFact :${interestingFacts}">
+    <div th:each="theatre: ${theatres}">
         <form
                 th:method="delete"
-                th:action="@{/admin/interesting_fact/{id} (id = ${interestingFact.getId()})}"
+                th:action="@{/admin/theatre/{id} (id = ${theatre.getId()})}"
                 style="display: inline"
         >
             <button type="submit">X</button>
         </form>
-        <span th:text="${interestingFact.getId()}"></span>
-        <span th:text="${interestingFact.getTitle()}"></span>
-        <span th:text="${interestingFact.getUrlVideo()}"></span>
-        <div th:text="${interestingFact.getText()}"></div>
-    </li>
+        <div class="image_block">
+            <a target="_blank" th:href="${theatre.getUrlTheatre()}"><img th:src="${theatre.getImgSrc()}" width="100%" alt=""></a>
+            <p th:text="${theatre.getNameTheatre()}"></p>
+        </div>
+    </div>
 </ul>
 
 </body>

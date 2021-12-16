@@ -21,10 +21,10 @@ public class Rus extends AbsDictionary {
 
     public String SEND = "Отправить";
 
-    public String INTERESTING_FACTS = "Интересные факты";
+    public String THEATRES = "Театры";
     public String TITLE = "Название";
-    public String TEXT = "Текст";
-    public String URL_VIDEO = "url видео";
+    public String TEXT = "Ссылка на театр";
+    public String URL_VIDEO = "Картинка";
 
     public String NAMELESS = "Безымянный";
 
@@ -32,4 +32,7 @@ public class Rus extends AbsDictionary {
     public String UPLOAD_FILE = "Загрузить файл";
     public String SEND_FILE = "Отправить файл";
     public String UPLOADING_FILES = "Загруженные файлы";
+
+    public String GRAPHICS = "Графики";
+    public String SHOW_GRAPHICS = "Перейти к графикам";
 }

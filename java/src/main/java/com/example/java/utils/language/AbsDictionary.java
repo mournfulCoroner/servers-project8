@@ -19,7 +19,7 @@ public abstract class AbsDictionary {
 
     public String SEND;
 
-    public String INTERESTING_FACTS;
+    public String THEATRES;
     public String TITLE;
     public String TEXT;
     public String URL_VIDEO;

@@ -1,0 +1,79 @@
+* {
+    font-family: monospace;
+}
+
+html, body {
+    height: 100%;
+}
+
+.name {
+    font-size: 23px;
+}
+
+.admin-panel {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background-color: azure;
+}
+
+.graphics-panel{
+    gap: 25px;
+    background-color: white !important;
+}
+
+form {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    row-gap: 10px;
+}
+
+form p {
+    width: 100%;
+    text-align: center;
+    display: grid;
+}
+
+.image_block{
+    display: block;
+    width: 500px;
+}
+.image_block p{
+    margin: 20px auto;
+}
+.image_block{
+    padding-top: 25px;
+    padding-bottom: 20px;
+    margin: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image_block a {
+    display: block;
+    width: 100%;
+}
+
+.image_block p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 8px 10px;
+    background-color: rgb(160, 184, 166);
+    border: 8px double  rgb(72, 92, 77); 
+    color: rgb(25, 37, 25);
+    width: 80%;
+
+    border-radius: 40px; 
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+.image_block a img:hover{
+    border: 5px solid rgb(255, 255, 255);
+    -webkit-filter: saturate(200%); 
+    filter: saturate(200%);
+}

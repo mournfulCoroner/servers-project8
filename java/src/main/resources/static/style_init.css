@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+body{
+    font-family: "Comfortaa", sans-serif; 
+    /* background-image: linear-gradient(transparent 50%, #4e4e4e 50%); */
+    background: url("./img/wall2.jpg") repeat-y;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%; 
+    -o-background-size: 100%;
+    background-size: 100%;
+    letter-spacing: 3px;
+    overflow-x: hidden;
+}
+
+main{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    margin: 50px 15px;
+}
+
+footer{
+    position: absolute;
+    width: 100%;
+    background: #b2dad2;
+    flex-shrink: 0; 
+    padding: 20px;
+}
+
+.theatres {
+    -ms-grid-rows: auto auto auto;
+}
+.ballet {
+    -ms-grid-rows: auto auto;
+}
+.index .text_block{
+    -ms-grid-column: 2;
+}
+.plays{
+    -ms-grid-row: auto auto;
+}
+.musicals{
+    -ms-grid-row: auto auto auto auto;
+}
+
+.theatres > :nth-child(3), 
+.theatres > :nth-child(4){
+    -ms-grid-row: 2;
+}
+.theatres > :nth-child(5){
+    -ms-grid-row: 3;
+}
+.ballet > :nth-child(3),
+.ballet > :nth-child(4){
+    -ms-grid-row: 2;
+}
+.plays > :nth-child(3),
+.plays > :nth-child(4){
+    -ms-grid-row: 2;
+}
+.musicals > :nth-child(3),
+.musicals > :nth-child(4){
+    -ms-grid-row: 2;
+}
+.musicals > :nth-child(5),
+.musicals > :nth-child(6){
+    -ms-grid-row: 3;
+}
+.musicals > :nth-child(7),
+.musicals > :nth-child(8){
+    -ms-grid-row: 4;
+}
+.theatres > .image_block:nth-child(2n),
+.ballet > :nth-child(2n),
+.plays > :nth-child(2n),
+.musicals > :nth-child(2n){
+    -ms-grid-column: 2;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+	box-sizing: border-box;
+}
+
+h2{
+    background: linear-gradient(45deg, rgb(95, 129, 104) 0%, #a7a7a7 100%);
+    border-right: 0;
+    padding: 10px;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.text_block{
+    background-color: rgb(118, 151, 127);
+
+    -moz-background-clip: padding;     
+    -webkit-background-clip: padding;  
+    background-clip: padding-box;      
+
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px; 
+
+    padding: 25px;
+    border: 20px solid rgba(72, 92, 77, 0.6);
+    margin: 20px 10px;
+    text-align: center;
+}
+
+.text_block img{
+    max-width: 100%;
+    margin: 5px;
+}
+
+.theatres .image_block{
+    display: block;
+}
+.theatres .image_block p{
+    margin: 20px auto;
+}
+.image_block{
+    padding-top: 25px;
+    padding-bottom: 20px;
+    margin: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.theatres > .image_block a {
+    display: block;
+    width: 100%;
+}
+
+.image_block img:not(.photo){
+    width: 100%;
+    max-width: 100%;
+}
+
+.image_block img {
+    border: 5px solid rgb(72, 92, 77);
+}
+
+.image_block p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 8px 10px;
+    background-color: rgb(160, 184, 166);
+    border: 8px double  rgb(72, 92, 77); 
+    color: rgb(25, 37, 25);
+    width: 80%;
+
+    border-radius: 40px; 
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+.image_block a img:hover{
+    border: 5px solid rgb(255, 255, 255);
+    -webkit-filter: saturate(200%); 
+    filter: saturate(200%);
+}
+
+.video_block{
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    margin: 20px 10px;
+}
+.video_block iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.gallery{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    width: 100%;
+}
+.gallery :not(:first-child){
+    border-left: 0;
+}
+.photo:hover{
+    border: 5px solid rgb(135, 175, 145);
+}
+
+.active_img{
+    border: 5px solid rgb(16, 19, 16);
+}
+
+.fclick{
+    cursor: pointer;
+    width: auto;
+}
+
+@media (max-width: 1150px){
+    main{ grid-template-columns: 100%;}
+    .text_block{margin-top: 10px;
+    border: 15px solid #485c4d99;}
+    .image_block{margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;}
+}
+@media (max-width: 1020px){
+    h2{font-size: 90%;}
+    p{ font-size: 80%;}
+}
+@media (max-width: 320px){
+    main{margin-left: 0;
+    margin-right: 0;}
+    .image_block{
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+}
+
+

@@ -17,11 +17,11 @@ WHERE NOT EXISTS (
     SELECT name FROM users WHERE name = 'admin' AND password = 'password'
 ) LIMIT 1;
 
-CREATE TABLE IF NOT EXISTS interesting_facts (
+CREATE TABLE IF NOT EXISTS theatres (
   ID INT(11) NOT NULL AUTO_INCREMENT,
-  title VARCHAR(50) NOT NULL,
-  text VARCHAR(500) NOT NULL,
-  url_video VARCHAR(50) NOT NULL,
+  img_src VARCHAR(100) NOT NULL,
+  url_theatre VARCHAR(100) NOT NULL,
+  name_theatre VARCHAR(100) NOT NULL,
   PRIMARY KEY (ID)
 );
 
@@ -30,3 +30,4 @@ CREATE TABLE IF NOT EXISTS files_info (
   name VARCHAR(100) NOT NULL,
   PRIMARY KEY (ID)
 );
+

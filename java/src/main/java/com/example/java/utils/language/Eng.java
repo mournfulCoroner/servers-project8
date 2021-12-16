@@ -22,14 +22,17 @@ public class Eng extends AbsDictionary{
 
     public String SEND = "Send";
 
-    public String INTERESTING_FACTS = "Interesting facts";
-    public String TITLE = "Title";
-    public String TEXT = "Text";
-    public String URL_VIDEO = "url video";
+    public String THEATRES = "Theatres";
+    public String TITLE = "Name";
+    public String TEXT = "URL theatre";
+    public String URL_VIDEO = "Image";
 
     public String NAMELESS = "Nameless";
     public String SEND_THIS_FILE = "Send this file";
     public String UPLOAD_FILE = "Upload file";
     public String SEND_FILE = "Send file";
     public String UPLOADING_FILES = "Uploading files";
+
+    public String GRAPHICS = "Graphics";
+    public String SHOW_GRAPHICS = "Go to graphics";
 }

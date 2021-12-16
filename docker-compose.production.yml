@@ -27,10 +27,5 @@ services:
     restart: always
     environment: 
       MYSQL_ROOT_PASSWORD: root
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8081:8080
   redis:
     image: "redis:alpine"

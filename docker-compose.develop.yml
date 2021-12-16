@@ -21,14 +21,9 @@ services:
     command: --init-file /data/application/init.sql
     restart: always
     ports:
-      - 3306:3306
+      - 3307:3306
     environment: 
       MYSQL_ROOT_PASSWORD: root
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8081:8080
   redis:
     image: "redis:alpine"
     ports:

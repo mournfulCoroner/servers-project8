@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Знаменитые театры</title>
+    <link rel="icon" href="../static/img/mask_icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../static/style_header.css">
+    <link rel="stylesheet" href="../static/style_init.css">
+</head>
+<body>
+    <header>
+        <h1 style="margin-bottom: 35px;"></h1>
+        <div class="menu_icon">
+            <button class="button_icon">
+                <span class="icon top"></span>
+                <span class="icon middle"></span>
+                <span class="icon bottom"></span>
+            </button>
+        </div>
+        <ul class="menu">
+            <li><a href="../static/index.html">Главное</a></li>
+            <li><a href="./theatres.html">Театры</a></li>
+            <li><a href="../static/ballet.html">Балет</a></li>
+            <li><a href="../static/musicals.html">Мюзиклы</a></li>
+            <li><a href="../static/plays.html">Пьесы</a></li>
+        </ul>
+    </header>
+    <h2>Знаменитые театры мира</h2>
+    <main class="theatres">
+        <div th:each="theatre: ${theatres}">
+            <div class="image_block">
+                <a target="_blank" th:href="${theatre.getUrlTheatre()}"><img th:src="${theatre.getImgSrc()}" width="100%" alt=""></a>
+                <p th:text="${theatre.getNameTheatre()}"></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="fclick">Выключить свет</div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../static/index.js"></script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 package com.example.java.controller;
 
 import com.example.java.dto.UploadPdfDTO;
-import com.example.java.modules.InterestingFact;
+import com.example.java.modules.Theatre;
 import com.example.java.modules.User;
 import com.example.java.modules.UserInfo;
 import com.example.java.service.FileService;
-import com.example.java.service.InterestingFactService;
+import com.example.java.service.TheatreService;
 import com.example.java.service.UserService;
 import com.example.java.utils.LanguageType;
 import com.example.java.utils.ThemeType;
@@ -35,7 +35,7 @@ public class AdminController {
     private final FileService fileService;
     private final LanguageHelper languageHelper;
     private final UserService userService;
-    private final InterestingFactService interestingFactService;
+    private final TheatreService theatreService;
 
     @Value("${graphic.access.key}")
     private String graphicAccessKey;
@@ -58,7 +58,7 @@ public class AdminController {
         model.addAttribute("dictionary", languageHelper.getDictionary(language));
 
         model.addAttribute("users", userService.selectAll());
-        model.addAttribute("interestingFacts", interestingFactService.selectAll());
+        model.addAttribute("theatres", theatreService.selectAll());
 
         return "admin";
     }
@@ -110,16 +110,16 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("/interesting_fact")
-    public String insertInterestingFact(@ModelAttribute InterestingFact interestingFact) {
-        interestingFactService.insert(interestingFact);
+    @PostMapping("/theatre")
+    public String insertTheatre(@ModelAttribute Theatre theatre) {
+        theatreService.insert(theatre);
 
         return "redirect:/admin";
     }
 
-    @DeleteMapping("/interesting_fact/{id}")
-    public String deleteInterestingFact(@PathVariable Integer id) {
-        interestingFactService.delete(id);
+    @DeleteMapping("/theatre/{id}")
+    public String deleteTheatre(@PathVariable Integer id) {
+        theatreService.delete(id);
 
         return "redirect:/admin";
     }

@@ -1,0 +1,10 @@
+* {
+    color: rgb(223, 220, 224) !important;
+    background-color: rgb(70, 68, 68) !important;
+}
+
+button, .send-file, .uploadButton {
+    border: 2px solid white;
+}
+
+

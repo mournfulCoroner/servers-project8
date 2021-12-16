@@ -1,7 +1,6 @@
 package com.example.java.repository;
 
 import com.example.java.modules.FileInfo;
-import com.example.java.modules.InterestingFact;
 import com.example.java.modules.UserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

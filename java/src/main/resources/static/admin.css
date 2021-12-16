@@ -1,0 +1,19 @@
+button, .send-file, .uploadButton {
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #4676D7;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.uploadButton div{
+  color: #00097d;
+}
+
+.list-pdf{
+  margin: 10px;
+}
