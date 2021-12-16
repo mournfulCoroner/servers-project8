@@ -11,29 +11,28 @@ include './Graphic.php';
 
 class GraphicIllnesses extends Graphic
 {
+    private $serie_oldill = "oldIlnesses";
+    private $serie_newill = "currentIllnesses";
+    private $serie_oldillweight = "oldIlnessesWeight";
+    private $serie_newillweight = "curretnIllnessesWeight";
+    private $serie_name = "name";
+
     function getData($fixtures)
     {
         $data = new Data();
 
-        $serie_oldill = "oldIlnesses";
-        $serie_newill = "currentIllnesses";
-        $serie_oldillweight = "oldIlnessesWeight";
-        $serie_newillweight = "curretnIllnessesWeight";
-        $serie_name = "name";
-
-
         foreach ($fixtures->getObjects() as $fixture) {
-            $data->addPoints($fixture->oldIlnesses, $serie_oldill);
-            $data->addPoints($fixture->currentIlnesses, $serie_newill);
-            $data->addPoints(1, $serie_oldillweight);
-            $data->addPoints(1, $serie_newillweight);
-            $data->addPoints($fixture->name, $serie_name);
+            $data->addPoints($fixture->oldIlnesses, $this->serie_oldill);
+            $data->addPoints($fixture->currentIlnesses, $this->serie_newill);
+            $data->addPoints(1, $this->serie_oldillweight);
+            $data->addPoints(1, $this->serie_newillweight);
+            $data->addPoints($fixture->name, $this->serie_name);
         }
 
-        $data->setSerieDescription($serie_oldill, "Last year");
-        $data->setSerieDescription($serie_newill, "This year");
+        $data->setSerieDescription($this->serie_oldill, "Last year");
+        $data->setSerieDescription($this->serie_newill, "This year");
         $data->setAxisName(0, "Amount of illnesses");
-        $data->setAbscissa($serie_name);
+        $data->setAbscissa($this->serie_name);
         return $data;
     }
 
@@ -67,8 +66,8 @@ class GraphicIllnesses extends Graphic
         $bubbleChart = new Bubble($image, $data);
 
         /* Scale up for the bubble chart */
-        $bubbleDataSeries = [$serie_oldill, $serie_newill];
-        $bubbleWeightSeries = [$serie_oldillweight, $serie_newillweight];
+        $bubbleDataSeries = [$this->serie_oldill, $this->serie_newill];
+        $bubbleWeightSeries = [$this->serie_oldillweight, $this->serie_newillweight];
         $bubbleChart->bubbleScale($bubbleDataSeries, $bubbleWeightSeries);
 
         $image->setGraphArea(40, 60, 1670, 270);

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="admin-panel">
 <h1 th:text="${dictionary.ADMIN_PANEL}"></h1>
 
 <div th:if="${nickname.length() > 0}" th:text="${nickname}"></div>
@@ -116,7 +117,7 @@
 
 <h2 th:text="${dictionary.THEATRES}"></h2>
 <form th:action="@{/admin/theatre}" th:method="post">
-    <p><span th:text="${dictionary.TITLE}"></span>: <input type="text" name="name" /></p>
+    <p><span th:text="${dictionary.TITLE}"></span>: <input type="text" name="nameTheatre" /></p>
     <p><span th:text="${dictionary.TEXT}"></span>: <input type="text" name="urlTheatre" /></p>
     <p><span th:text="${dictionary.URL_VIDEO}"></span>: <input type="text" name="imgSrc" /></p>
     <p><button type="submit" th:text="${dictionary.SEND}"></button></p>
@@ -137,7 +138,7 @@
         </div>
     </div>
 </ul>
-
+</div>
 </body>
 
 </html>
